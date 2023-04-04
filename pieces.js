@@ -86,8 +86,30 @@ const abordablesElements = document.createElement('ul');
 for(let i=0; i < noms.length ; i++){
     const nomElement = document.createElement('li');
     nomElement.innerText = noms[i];
-    abordablesElements.appendChild(nomElement)
+    abordablesElements.appendChild(nomElement);
 }
+
+
+const noms2 = pieces.map(piece => `${piece.nom} - ${piece.prix}`);
+for(let i = pieces.length -1 ; i>=0; i--) {
+    if (pieces[i].disponibilite == false){
+        noms2.splice(i,1);
+    };
+};
+
+
+
+//Création de la liste
+const dispoElements = document.createElement('ul');
+//Ajout de chaque nom à la liste
+for(let i=0; i < noms2.length ; i++){
+    const nomElement = document.createElement('li');
+    nomElement.innerText = noms2[i];
+    dispoElements.appendChild(nomElement)
+}
+
 // Ajout de l'en-tête puis de la liste au bloc résultats filtres
-document.querySelector('.abordables')
-    .appendChild(abordablesElements)
+document.querySelector('.abordables').appendChild(abordablesElements)
+
+document.querySelector('.dispo').appendChild(dispoElements)
+
